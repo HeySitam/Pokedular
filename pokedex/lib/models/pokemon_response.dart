@@ -1,8 +1,11 @@
 class PokemonResponse {
   final List<Pokemon>? results;
-
+  final String? next;
+  final String? previous;
   PokemonResponse({
     this.results,
+    this.next,
+    this.previous
   });
 
   factory PokemonResponse.fromJson(Map<String, dynamic> json) {
@@ -10,6 +13,8 @@ class PokemonResponse {
       results: json['results'] != null
           ? List<Pokemon>.from(json['results'].map((data) => Pokemon.fromJson(data)))
           : null,
+      next: json['next'],
+      previous: json["previous"]
     );
   }
 
